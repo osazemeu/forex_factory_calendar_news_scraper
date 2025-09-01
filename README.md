@@ -13,9 +13,20 @@ The project consists of several Python files and a configuration file:
 ## How to Use
 Follow these steps to use the Forex Factory News Event Scraper:
 Ensure you have Python installed on your system.
-Install the necessary Python libraries by running the following command:
 
-`python3 -m pip install -r requirements.txt`
+## Virtual Environment Setup
+It is recommended to use a Python virtual environment for this project. To set up and activate a virtual environment, run the following commands in your project directory:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Once the environment is activated, install the necessary Python libraries by running:
+
+```
+pip install -r requirements.txt
+```
 
 ## Webdriver Installation:
 The script uses the Chrome WebDriver to interact with the website. Make sure you have Google Chrome installed.
