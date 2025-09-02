@@ -220,8 +220,7 @@ def main():
                 year = datetime.now().year
                 scrape_month(month, year, param)
     
-    else:
-        print("[ERROR] Please provide either --start and --end together, or use --months")
+        print("[ERROR] Please provide both --start and --end together for date range scraping. Only one was provided.")
 
 
 if __name__ == "__main__":
