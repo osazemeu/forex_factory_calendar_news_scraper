@@ -69,13 +69,9 @@ def parse_table(driver, month, year):
                 elif "calendar__detail" in class_name and event_id:
                     detail_url = f"https://www.forexfactory.com/calendar?month={month}#detail={event_id}"
                     row_data[f"{class_name_key}"] = detail_url
-                elif "calendar__forecast" in class_name:
-                    span = element.get_attribute('innerText')
-                    value = span.strip() if span else ""
-                    row_data[f"{class_name_key}"] = value if value else "empty"
-                elif "calendar__previous" in class_name:
-                    span = element.get_attribute('innerText')
-                    value = span.strip() if span else ""
+                elif class_name_key in ["forecast", "previous"]:
+                    value = element.get_attribute('innerText')
+                    value = value.strip() if value else ""
                     row_data[f"{class_name_key}"] = value if value else "empty"
                 elif element.text:
                     row_data[f"{class_name_key}"] = element.text
