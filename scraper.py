@@ -197,7 +197,7 @@ def main():
             return
     
     # Handle individual month parameters (existing functionality)
-    elif args.months or (not args.start and not args.end):
+    elif args.months is not None or (not args.start and not args.end):
         month_params = args.months if args.months else ["this"]
 
         for param in month_params:
