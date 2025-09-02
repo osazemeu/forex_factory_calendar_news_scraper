@@ -33,11 +33,48 @@ The script uses the Chrome WebDriver to interact with the website. Make sure you
 If you don't have the Chrome WebDriver installed, the script will attempt to install it using webdriver_manager. However, it's recommended to install it manually for better control.
 
 ## Running the Scraper:
-Execute the scraper.py script to initiate the scraping process, using the command:
+The scraper supports multiple usage modes for flexible data collection:
 
-`python3 scraper.py`
+### Default Behavior (Current Month)
+Execute the scraper without any arguments to scrape the current month:
+```bash
+python3 scraper.py
+```
 
-It will launch a Chrome browser, navigate to the Forex Factory calendar page for the current month, and collect data. The scraped data will be reformatted and saved as a CSV file in the "news" directory with the filename in the format "MONTH_news.csv," where "MONTH" is the current month's name.
+### Scraping Specific Months
+Use the `--months` parameter to specify particular months:
+```bash
+# Scrape current month
+python3 scraper.py --months this
+
+# Scrape next month
+python3 scraper.py --months next
+
+# Scrape multiple specific months
+python3 scraper.py --months this next
+```
+
+### Scraping Date Ranges
+Use the `--start` and `--end` parameters to scrape data across multiple months:
+```bash
+# Scrape from January 2007 to June 2007
+python3 scraper.py --start "jan 2007" --end "jun 2007"
+
+# Also works with full month names
+python3 scraper.py --start "january 2007" --end "december 2007"
+
+# Mixed case formatting is supported
+python3 scraper.py --start "Jan 2007" --end "Dec 2007"
+```
+
+### Supported Date Formats
+The scraper accepts flexible month/year formats:
+- Abbreviated months: `jan`, `feb`, `mar`, etc.
+- Full month names: `january`, `february`, `march`, etc.
+- Case insensitive: `Jan`, `JAN`, `january`, `JANUARY` all work
+- Format: `"month year"` (e.g., `"jan 2007"`, `"January 2025"`)
+
+The scraped data will be reformatted and saved as CSV files in the "news" directory with filenames in the format "MONTH_YEAR_news.csv" for each month processed.
 
 
 ### Notes
